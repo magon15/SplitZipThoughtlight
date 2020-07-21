@@ -40,6 +40,8 @@ import org.joda.time.Seconds;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.TimeZone;
 
@@ -153,9 +155,10 @@ public class MainActivity extends AppCompatActivity {
                             int numMinutes = Minutes.minutesBetween(timeStarted,timeEnded).getMinutes();
                             int numSeconds = Seconds.secondsBetween(timeStarted,timeEnded).getSeconds() - (numMinutes * 60);
 
+                            NumberFormat formatter = new DecimalFormat("#0.00");
 
                             textFileSelected.setText("It took " + numMinutes + " minute/s & " + numSeconds +
-                                    " seconds to convert a " + fileZipSize + " MB video.\n\nLocation: " + zipFilePath);
+                                    " seconds to convert a " + formatter.format(fileZipSize) + " MB video.\n\nLocation: " + zipFilePath);
 
                             progressLoading.setVisibility(View.GONE);
                         }
